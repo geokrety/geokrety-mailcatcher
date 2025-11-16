@@ -15,5 +15,6 @@ jobs:
       image_name: geokrety/mailcatcher
       dockerhub_username: ${{ vars.DOCKERHUB_USERNAME }}
       dockerfile: Dockerfile
+      bake: true
     secrets:
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}

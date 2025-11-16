@@ -1,0 +1,19 @@
+name: docker-build
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "v*.*.*"
+  pull_request:
+
+jobs:
+  docker:
+    uses: geokrety/geokrety-gha-workflows/.github/workflows/docker-build.yml@main
+    with:
+      image_name: geokrety/mailcatcher
+      dockerhub_username: ${{ vars.DOCKERHUB_USERNAME }}
+      dockerfile: Dockerfile
+    secrets:
+      dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}

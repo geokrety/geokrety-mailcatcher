@@ -1,0 +1,16 @@
+name: Automatic release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-release:
+    uses: geokrety/geokrety-gha-workflows/.github/workflows/release-with-docker.yml@main
+    with:
+      image_name: geokrety/mailcatcher
+      dockerhub_username: ${{ vars.DOCKERHUB_USERNAME }}
+    secrets:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
